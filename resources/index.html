@@ -1,0 +1,95 @@
+<body class="bg-dark-2">
+
+    <div class="tab-content" id="justifiedTabContent">
+        <div aria-labelledby="encrypt-tab" class="tab-pane fade show active" id="encrypt" role="tabpanel">
+            <nav class="navbar-dark bg-success pywebview-drag-region">
+                <ul class="navbar-nav" style="height:1.25rem">
+                    <li class="nav-item ml-auto">
+                        <div class="nav-link" style="transition:0s;height:1.25rem" onclick='pywebview.api.minimize()'>
+                            <span class="material-icons" style="font-size:.8em;line-height:0">minimize</span>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-link" style="transition:0s;height:1.25rem" onclick='pywebview.api.fullscreen()'>
+                            <span class="material-icons" style="font-size:.8em;line-height:0">fullscreen</span>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-link" style="transition:0s;height:1.25rem" onclick='pywebview.api.close()'>
+                            <span class="material-icons" style="font-size:.8em;line-height:0">close</span>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="jumbotron pt-4 text-white shadow-none bg-dark-2">
+                <div class="row mb-4">
+                    <div class="col">
+                        <h1 class="display-4">Encrypt</h1>
+                    </div>
+                    <div class="col">
+                        <input class="form-control text-white h-100" id="key_e" placeholder="Enter key" type="text" onchange="document.getElementById('key_d').value = this.value">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col">
+                        <textarea class="form-control text-white bg-dark-1" id="data_encrypt" placeholder="Enter text" rows="5" onkeyup="document.getElementById('result_encrypt').innerHTML = ''"></textarea>
+                    </div>
+                    <div class="col">
+                        <textarea class="form-control text-white bg-dark-1" id="result_encrypt" placeholder="" rows="5" disabled onclick="this.setSelectionRange(0, this.value.length)"></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success btn-sm shadow-none" onclick='encrypt()'>Encrypt</button>
+            </div>
+        </div>
+        <div aria-labelledby="decrypt-tab" class="tab-pane fade" id="decrypt" role="tabpanel">
+            <nav class="navbar-dark bg-info pywebview-drag-region">
+                <ul class="navbar-nav" style="height:1.25rem">
+                    <li class="nav-item ml-auto">
+                        <div class="nav-link" style="transition:0s;height:1.25rem" onclick='pywebview.api.minimize()'>
+                            <span class="material-icons" style="font-size:.8em;line-height:0">minimize</span>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-link" style="transition:0s;height:1.25rem" onclick='pywebview.api.fullscreen()'>
+                            <span class="material-icons" style="font-size:.8em;line-height:0">fullscreen</span>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-link" style="transition:0s;height:1.25rem" onclick='pywebview.api.close()'>
+                            <span class="material-icons" style="font-size:.8em;line-height:0">close</span>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="jumbotron pt-4 text-white shadow-none bg-dark-2">
+                <div class="row mb-4">
+                    <div class="col">
+                        <h1 class="display-4">Decrypt</h1>
+                    </div>
+                    <div class="col">
+                        <input class="form-control text-white h-100" id="key_d" placeholder="Enter key" type="text" onchange="document.getElementById('key_e').value = this.value">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col">
+                        <textarea class="form-control text-white bg-dark-1" id="data_decrypt" placeholder="Enter text" rows="5" onkeyup="document.getElementById('result_decrypt').innerHTML = ''"></textarea>
+                    </div>
+                    <div class="col">
+                        <textarea class="form-control text-white bg-dark-1" id="result_decrypt" placeholder="" rows="5" disabled onclick="this.setSelectionRange(0, this.value.length)"></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-info btn-sm shadow-none" onclick='decrypt()'>Decrypt</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="nav nav-justified nav-tabs fixed-bottom shadow-none ml-2 mb-1" id="justifiedTab" role="tablist" style="transform:translateY(-4px)">
+        <div class="btn btn-float btn-outline btn-success text-white d-flex justify-content-center align-items-center mx-3 mb-3 active shadow-none btn-sm" aria-controls="encrypt" aria-selected="true" data-toggle="tab" href="#encrypt" id="encrypt-tab" role="tab">
+            <span class="material-icons">enhanced_encryption</span>
+        </div>
+        <div class="btn btn-float btn-outline btn-info text-white d-flex justify-content-center align-items-center mb-3 shadow-none btn-sm" aria-controls="decrypt" aria-selected="false" data-toggle="tab" href="#decrypt" id="decrypt-tab" role="tab">
+            <span class="material-icons">no_encryption</span>
+        </div>
+    </div>
+
+</body>
